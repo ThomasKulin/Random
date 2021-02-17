@@ -1,6 +1,7 @@
 import requests
 import datetime
 import time
+import os
 
 # name, api call
 links = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184167"],
@@ -52,8 +53,9 @@ while True:
             response = requests.get(links[i][1]).content.decode("utf-8")
         except:
             print("connection failed")
-        if flag[i] == 0 and response != '{"loc":"All Locations","avail":0,"avail2":"NO AVAILABLE","loc2":"ONLINE"}':
+        if flag[i] == 0 and response != '{"loc":"All Locations","avail":0,"avail2":"NO AVAILABLE","loc2":"ONLINE"}' and response != '{"loc":"ONLINE","avail":0}':
             flag[i] = 1
-            print(DateTime+'\t'+links[i][0]+'\t'+response+'\n'+links[i][1])
+            print(DateTime+'\t'+links[i][0]+'\t'+response+'\nhttps://www.canadacomputers.com/product_info.php?cPath=43_557_559&item_id='+links[i][1][-6:])
+            os.system("KillingInTheName.mp3")
 
-    time.sleep(60)
+    time.sleep(1)
