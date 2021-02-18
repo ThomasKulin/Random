@@ -2,9 +2,10 @@ import requests
 import datetime
 import time
 import os
+import threading
 
 # name, api call
-links = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184167"],
+links_3070 = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184167"],
          ["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183101"],
          ["MSI RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183210"],
          ["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183099"],
@@ -24,7 +25,9 @@ links = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php
          ["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183100"],
          ["ZOTAC RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183560"],
          ["ZOTAC RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185675"],
-         ["ASUS RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181842"],
+         ]
+
+links_3080 = [["ASUS RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181842"],
          ["MSI RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181348"],
          ["ASUS RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181415"],
          ["MSI RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181347"],
@@ -44,18 +47,30 @@ links = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php
          ["gigabyte RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=186345"],
          ]
 
-flag = [0 for p in range(len(links))]
 
-while True:
-    for i in range(len(links)):
-        DateTime = datetime.datetime.now().strftime("%Y_%m_%d %H_%M").replace('.', '-')
-        try:
-            response = requests.get(links[i][1]).content.decode("utf-8")
-        except:
-            print("connection failed")
-        if flag[i] == 0 and response != '{"loc":"All Locations","avail":0,"avail2":"NO AVAILABLE","loc2":"ONLINE"}' and response != '{"loc":"ONLINE","avail":0}':
-            flag[i] = 1
-            print(DateTime+'\t'+links[i][0]+'\t'+response+'\nhttps://www.canadacomputers.com/product_info.php?cPath=43_557_559&item_id='+links[i][1][-6:])
-            os.system("KillingInTheName.mp3")
+def func_3070():
+    func(links_3070)
 
-    time.sleep(1)
+def func_3080():
+    func(links_3080)
+
+def func(links):
+    while True:
+        for i in range(len(links)):
+            DateTime = datetime.datetime.now().strftime("%Y_%m_%d %H_%M").replace('.', '-')
+            try:
+                response = requests.get(links[i][1]).content.decode("utf-8")
+            except:
+                print("connection failed")
+            if response != '{"loc":"All Locations","avail":0,"avail2":"NO AVAILABLE","loc2":"ONLINE"}' and response != '{"loc":"ONLINE","avail":0}':
+                print(DateTime + '\t' + links[i][
+                    0] + '\t' + response + '\nhttps://www.canadacomputers.com/product_info.php?cPath=43_557_559&item_id=' +
+                      links[i][1][-6:])
+                os.system("KillingInTheName.mp3")
+
+        time.sleep(1)
+
+thread_3070 = threading.Thread(target=func_3070)
+thread_3070.start()
+thread_3080 = threading.Thread(target=func_3080)
+thread_3080.start()
