@@ -5,6 +5,22 @@ import os
 import threading
 
 # name, api call
+links_3060ti = [["GIGABYTE RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=188703"],
+         ["EVGA RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185988"],
+         ["EVGA RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185987"],
+         ["ZOTAC RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185752"],
+         ["ZOTAC RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185751"],
+         ["GIGABYTE RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185408"],
+         ["GIGABYTE RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185407"],
+         ["GIGABYTE RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185405"],
+         ["ASUS RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185168"],
+         ["MSI GeForce RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185087"],
+         ["MSI RTX 3060 Ti ", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185086"],
+         ["ASUS RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184760"],
+         ["ASUS RTX 3060 Ti", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184759"],
+         ["ASUS RTX 3060 Ti ", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184431"],
+         ]
+
 links_3070 = [["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184167"],
          ["Gigabyte RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183101"],
          ["MSI RTX 3070", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183210"],
@@ -46,6 +62,28 @@ links_3080 = [["ASUS RTX 3080", "https://www.canadacomputers.com/product_info.ph
          ["msi RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185084"],
          ["gigabyte RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=186345"],
          ]
+
+links_3090 = [["MSI RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185085"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184164"],
+         ["ASUS RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181413"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=188242"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=188241"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=187349"],
+         ["ASUS RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=186355"],
+         ["ASUS RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=186308"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184165"],
+         ["Gigabyte RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=182755"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=183096"],
+         ["EVGA RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181854"],
+         ["EVGA RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181853"],
+         ["ASUS RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181841"],
+         ["ZOTAC RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181419"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181352"],
+         ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181351"],
+         ["MSI  RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181350"],
+         ["MSI RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=181349"],
+         ]
+
 
 
 def func_3070():
