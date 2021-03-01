@@ -62,6 +62,7 @@ links_3080 = [["ASUS RTX 3080", "https://www.canadacomputers.com/product_info.ph
          ["msi RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185084"],
          ["gigabyte RTX 3080", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=186345"],
          ]
+count = 0
 
 links_3090 = [["MSI RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=185085"],
          ["GIGABYTE RTX 3090", "https://www.canadacomputers.com/product_info.php?ajaxstock=true&itemid=184164"],
@@ -93,11 +94,14 @@ def func_3080():
     func(links_3080)
 
 def func(links):
+    count = 0
     while True:
         for i in range(len(links)):
             DateTime = datetime.datetime.now().strftime("%Y_%m_%d %H_%M").replace('.', '-')
             try:
+                time.sleep(2)
                 response = requests.get(links[i][1]).content.decode("utf-8")
+                count = count + 1
             except:
                 print("connection failed")
             if response != '{"loc":"All Locations","avail":0,"avail2":"NO AVAILABLE","loc2":"ONLINE"}' and response != '{"loc":"ONLINE","avail":0}':
@@ -105,10 +109,11 @@ def func(links):
                     0] + '\t' + response + '\nhttps://www.canadacomputers.com/product_info.php?cPath=43_557_559&item_id=' +
                       links[i][1][-6:])
                 os.system("KillingInTheName.mp3")
+                print(count)
 
-        time.sleep(1)
+
 
 thread_3070 = threading.Thread(target=func_3070)
 thread_3070.start()
-thread_3080 = threading.Thread(target=func_3080)
-thread_3080.start()
+# thread_3080 = threading.Thread(target=func_3080)
+# thread_3080.start()
